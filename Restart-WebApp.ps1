@@ -1,4 +1,46 @@
-﻿# Parameters 
+
+<#PSScriptInfo
+
+.VERSION 1.0
+
+.GUID ca155326-daef-4563-9c58-dcca674d02b2
+
+.AUTHOR Joshua Miller
+
+.COMPANYNAME 
+
+.COPYRIGHT 
+
+.TAGS 
+
+.LICENSEURI 
+
+.PROJECTURI 
+
+.ICONURI 
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS 
+
+.EXTERNALSCRIPTDEPENDENCIES 
+
+.RELEASENOTES
+
+
+#>
+
+<# 
+
+.DESCRIPTION 
+ Restarts Azure App Services 
+
+#> 
+
+Param()
+
+
+# Parameters 
     Param(
  
         [Parameter (Mandatory =$true)] 
