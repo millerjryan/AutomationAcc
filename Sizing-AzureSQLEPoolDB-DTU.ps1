@@ -63,4 +63,5 @@ Write-Output "Before Change:"
 Write-Output $epooldb
 # Change EPOOL 
 Write-Output "After Change:"
-Set-AzureRmSqlElasticPool -ResourceGroupName $ResourceGroupName -ServerName $ServerName -ElasticPoolName $ElasticPoolName -Dtu $DTU -DatabaseDtuMax $DatabaseDTUMax -DatabaseDtuMin $DatabaseDTUMin
+$epoolChanges = Set-AzureRmSqlElasticPool -ResourceGroupName $ResourceGroupName -ServerName $ServerName -ElasticPoolName $ElasticPoolName -Dtu $DTU -DatabaseDtuMax $DatabaseDTUMax -DatabaseDtuMin $DatabaseDTUMin
+Write-Output $epoolChanges
