@@ -27,7 +27,7 @@
        ) 
 
 
-################
+###################
 # Auth with Azure
 
 $connectionName = "AzureRunAsConnection"
