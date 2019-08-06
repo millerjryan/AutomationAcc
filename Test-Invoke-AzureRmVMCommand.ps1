@@ -27,16 +27,18 @@ catch {
 # End of Auth
 ################
 
-$Logfile = ".\script.sh"
+$scriptfile = ".\script.sh"
 
-Function LogWrite
+Function WriteToScript
 {
-   Param ([string]$logstring)
+   Param ([string]$scriptline)
 
-   Add-content $Logfile -value $logstring
+   Add-content $scriptfile -value $scriptline
 }
 
-LogWrite "mkdir -p /home/vmadmin/testfolder/shared/db;"
+WriteToScript "mkdir -p /home/vmadmin/testfolder1/shared/db;"
+WriteToScript "mkdir -p /home/vmadmin/testfolder2/shared/db;"
+WriteToScript "mkdir -p /home/vmadmin/testfolder3/shared/db;"
 
 $files = Get-ChildItem
 Write-Output $files
