@@ -40,4 +40,4 @@ LogWrite "mkdir -p /home/vmadmin/testfolder/shared/db;"
 
 $files = Get-ChildItem
 Write-Output $files
-Invoke-AzVMRunCommand -ResourceGroupName "vjomiLABrg" -Name LNX-VM1-VJOMI -CommandId "RunShellScript" -ScriptPath .\script.sh
+Invoke-AzureRmVMRunCommand -ResourceGroupName "vjomiLABrg" -Name LNX-VM1-VJOMI -CommandId "RunShellScript" -ScriptPath .\script.sh
