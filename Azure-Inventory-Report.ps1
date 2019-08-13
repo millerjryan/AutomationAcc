@@ -1,3 +1,58 @@
+<#PSScriptInfo
+
+.VERSION 1.0
+
+.GUID 43aad25b-71a6-4e88-a836-847a5f971460
+
+.AUTHOR v-jomi
+
+.COMPANYNAME
+
+.COPYRIGHT
+
+.TAGS
+
+.LICENSEURI
+
+.PROJECTURI
+
+.ICONURI
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS
+
+.EXTERNALSCRIPTDEPENDENCIES
+
+.RELEASENOTES
+
+
+.PRIVATEDATA
+
+#>
+
+#Requires -Module Az.Account
+#Requires -Module Az.Compute
+#Requires -Module Az.KeyVault
+#Requires -Module Az.Network
+#Requires -Module Az.Profile
+
+<# 
+
+.DESCRIPTION 
+ Script that collects an Inventory of Azure Resources and emails a csv report.  Please fill in the missing fields in the Variables section. 
+
+#> 
+$VaultName = "vjomiLABkv"
+
+$from = "Put in an email (XXXXX@XXXX.com)"
+$to = "Put in an email (XXXXX@XXXX.com)"
+$subject = "<Subject of email>"
+$body = "<Body of email in plaintext>"
+
+$reportname1 = "Inventory.csv"
+$reportname2 = "Public-IPs.csv"
+
 ################
 # Auth with Azure
 
@@ -29,7 +84,6 @@ catch {
 
 ################
 # Get SendGrid API key
-$VaultName = "vjomiLABkv"
 
 $username = "apikey"
 $password = (Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey").SecretValueText
@@ -53,7 +107,7 @@ $info.IpAddress = $nic.IpConfigurations.PrivateIpAddress
 $info.OStype = $vm.StorageProfile.osDisk.osType
 $report1+=$info
 }
-$report1 | export-csv .\Tzf-DEMO-FACET.csv -delimiter ";" -force -notypeinformation
+$report1 | export-csv .\$reportname1 -delimiter ";" -force -notypeinformation
 # End of VM REPORT
 #################
 
@@ -73,7 +127,7 @@ $info.IpAddress = $ip.IpAddress
 $report2+=$info
 }
 $report2
-$report2 | export-csv .\Txf-Public-ip.csv -delimiter ";" -force -notypeinformation
+$report2 | export-csv .\$reportname2 -delimiter ";" -force -notypeinformation
 # End of Public IP REPORT
 #################
 
@@ -81,17 +135,17 @@ $report2 | export-csv .\Txf-Public-ip.csv -delimiter ";" -force -notypeinformati
 # SendMail
 
 $attachments = @(
-	".\Tzf-DEMO-FACET.csv"
-    ".\Txf-Public-ip.csv"
+	".\$reportname1"
+        ".\$reportname2"
 
 )
 
 $securePassword = ConvertTo-SecureString $password -AsPlaintext -Force
 $mailArgs = @{
-	From =			"V-JOMI@MICROSOFT.com"  # Put in an email (XXXXX@XXXX.com)
-	To =			"V-JOMI@MICROSOFT.com"  # (XXXXX@XXXX.com)
-	Subject =		"Azure Inventory Summary Report"
-	Body =			"Azure Inventory. Please review the attached file. Thank You"
+	From =			$from  
+	To =			$to  
+	Subject =		$subject
+	Body =			$body
 	Attachments =	$attachments
 	SmtpServer =	"smtp.sendgrid.net"
 	Port =			587
