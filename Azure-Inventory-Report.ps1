@@ -15,6 +15,7 @@
 .LICENSEURI
 
 .PROJECTURI
+https://raw.githubusercontent.com/millerjryan/AutomationAcc/master/Azure-Inventory-Report.ps1
 
 .ICONURI
 
