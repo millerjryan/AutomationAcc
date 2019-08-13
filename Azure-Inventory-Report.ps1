@@ -1,6 +1,6 @@
 <#PSScriptInfo
 
-.VERSION 1.0
+.VERSION 1.1
 
 .GUID 43aad25b-71a6-4e88-a836-847a5f971460
 
@@ -43,7 +43,10 @@
  Script that collects an Inventory of Azure Resources and emails a csv report.  Please fill in the missing fields in the Variables section. 
 
 #> 
-$VaultName = "vjomiLABkv"
+################
+# Start of Variables (Edit these)
+
+$VaultName = "<Name of KeyVault>"
 
 $from = "Put in an email (XXXXX@XXXX.com)"
 $to = "Put in an email (XXXXX@XXXX.com)"
@@ -52,6 +55,9 @@ $body = "<Body of email in plaintext>"
 
 $reportname1 = "Inventory.csv"
 $reportname2 = "Public-IPs.csv"
+
+# End of Variables
+################
 
 ################
 # Auth with Azure
@@ -115,7 +121,7 @@ $report1 | export-csv .\$reportname1 -delimiter ";" -force -notypeinformation
 # Public IP Report
 
 $report2 = @()
-$pubIPs = Get-AzPublicIpAddress | ?{ $_.VirtualMachine -NE $null}
+$pubIPs = Get-AzPublicIpAddress #| ?{ $_.IpAddress -NE "Not Assigned"}
 $pubIPs
 
 foreach($ip in $pubIPs)
