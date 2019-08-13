@@ -133,7 +133,7 @@ $info.ResourceGroupName = $ip.ResourceGroupName
 $info.IpAddress = $ip.IpAddress
 $report2+=$info
 }
-$report2
+
 $report2 | export-csv .\$reportname2 -delimiter ";" -force -notypeinformation
 # End of Public IP REPORT
 #################
