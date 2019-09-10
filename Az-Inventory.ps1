@@ -13,27 +13,8 @@ $reportname1 = "Inventory.csv"
 
 
 $subscriptions = @(
-	'TZF-EXT-MT-PERF-001',
-	'TZF-INT-DEV-MGMT',
-	'TZF-INT-DEV-MULTI-001',
-    'TZF-PRD-MT-PROD-001',
-    'TZF-PRD-MGMT',
-    'TZF-INT-DEV-MEDAI-001',
-    'TZF-EXT-MT-SIT-001',
-    'TZF-EXT-MT-INTEG-001',
-    'TZF-EXT-MT-LIFES-001',
-    'TZF-INT-DEV-001',
-    'TZF-INT-DEV-MULTI-002',
-    'TZF-DEV-FACETS',
-    'TZF-DEMO-FACETS',
-    'TZF-UTILITY',
-    'TZF-DEMO-MULTI-003',
-    'TZF-PRD-MT-PREP-001',
-    'TZF-EXT-MT-PAT-001',
-    'TZF-DEMO-MULTI-002',
-    'TZF-EXT-MT-SID-001',
-    'TZF-DEMO-MULTI-001',
-    'TZF-EXT-MT-DEMO-001'
+	'subscription name',
+	'subscription name2'
 )
 #
 
