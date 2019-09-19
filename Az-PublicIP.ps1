@@ -69,7 +69,7 @@ $info.IpAddress = $nic.IpConfigurations.PrivateIpAddress
 $info.OStype = $vm.StorageProfile.osDisk.osType
 $report1+=$info
 }
-$report1 | export-csv .\$reportname1 -delimiter ";" -force -notypeinformation
+$report1 | export-csv .\$reportname1 -delimiter "," -force -notypeinformation
 # End of VM REPORT
 #################
 #>
@@ -139,7 +139,7 @@ $info.IpAddress = $ip.IpAddress
 $report2+=$info
 }
 
-$report2 | export-csv .\$reportname2 -delimiter ";" -force -notypeinformation
+$report2 | export-csv .\$reportname2 -delimiter "," -force -notypeinformation
 # End of Public IP REPORT
 #################
 
