@@ -3,10 +3,16 @@ param
     [Parameter (Mandatory = $false)]
     [object] $WebhookData
 )
+"WebhookData"
+$WebhookData
+"================================="
+"WebhookData.RequestHeader.message"
+$WebhookData.RequestHeader.message
+"================================="
+"WebhookData.RequestBody"
+$WebhookData.RequestBody
 
-
-
-# If runbook was called from Webhook, WebhookData will not be null.
+<# # If runbook was called from Webhook, WebhookData will not be null.
 if ($WebhookData) {
 
     # Check header for message to validate request
@@ -48,3 +54,4 @@ else {
     # Error
     write-Error "This runbook is meant to be started from an Azure alert webhook only."
 }
+#>
